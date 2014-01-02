@@ -1,1 +1,41 @@
 /* For all the css styling to be used on the site */
+#mapcont{
+width:1450px;
+height:800px;
+border: 5px solid black;
+border-radius: 10px;
+overflow:hidden;
+background-color: black;
+}
+
+#map{
+height:790px;
+border-radius: 10px;
+}
+
+.level0, .level1, .level2 {
+
+	border:1px solid black;
+}
+
+.level2 {
+	width:80px;
+	height:80px;
+	float: left;
+
+}
+
+.level1 {
+	width:200px;
+	height:200px;
+	float: left;
+	font-size:30px;
+}
+
+.level0 {
+	width:434px;
+	height:434px;
+	left:100px;
+	top:100px;
+	position:absolute;
+}
