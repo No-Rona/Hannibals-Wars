@@ -1,41 +1,64 @@
 /* For all the css styling to be used on the site */
+body{
+background: url('../img/back.png');
+}
 #mapcont{
-width:1450px;
+top:100px;
+/*width:1450px;
 height:800px;
 border: 5px solid black;
 border-radius: 10px;
-overflow:hidden;
 background-color: black;
+*/overflow:hidden;
+
+
 }
 
 #map{
 height:790px;
 border-radius: 10px;
+border:2px solid black;
+
 }
 
 .level0, .level1, .level2 {
 
-	border:1px solid black;
-}
-
-.level2 {
-	width:80px;
-	height:80px;
-	float: left;
-
-}
-
-.level1 {
-	width:200px;
-	height:200px;
-	float: left;
-	font-size:30px;
+	/*border:1px solid black;*/
 }
 
 .level0 {
-	width:434px;
-	height:434px;
-	left:100px;
-	top:100px;
 	position:absolute;
+}
+
+#north{
+width:800px;
+height: 400px;
+left: 400px;
+}
+
+#south{
+width:1000px;
+height: 300px;
+top:550px;
+left:150px;
+}
+
+#east{
+width:500px;
+height:600px;
+left:1000px;
+}
+
+#west{
+width:500px;
+height:400px;
+left:100px;
+top:175px;
+}
+
+#center{
+width:500px;
+height:400px;
+top:200px;
+left: 600px;
 }
