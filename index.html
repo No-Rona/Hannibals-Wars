@@ -3,7 +3,7 @@
 <head>
 <title>Hannibal's Wars</title>
 
-	<link rel='stylesheet' type='text/css' href='css/style.css'/>
+	<link rel='stylesheet' type='text/css' href='css/style.css'/> //this 
 	<script type='javascript' src='js/script.js'></script>
 	<link rel="icon" type="image/png" href="img/Rome.png">
 	
@@ -11,12 +11,14 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script src="js/jquery.zoomooz.min.js"></script>
 
-
+	
 
 </head>
 
 <body>
 
+
+<!-- ALL THE PROCESSING SCRIPT  -->
 <script src="js/processing.js"></script>
 <script type="text/processing" data-processing-target="mycanvas">
 //Directives
@@ -41,16 +43,20 @@ void setup(){
 // Main draw loop
 void draw(){
 
+background(255,132,0);
 image(map, 0, 0, 1300, 700);
-
 if(showMenu){
 drawMenu();
 }
                
 }
+
+
 //Mouse moving functions
 void mouseMoved(){
-if(mouseY<100){
+
+
+if(mouseY<100){		//showing Menu bar
 showMenu=true;
 }
 else{
@@ -58,9 +64,14 @@ showMenu=false;
 }
 }
 
+
+//The Menu Bar
 void drawMenu(){
 rect(0,0,1300,50,10,10,10,10);
 }
+
+
+
 </script>
 <br><br><center><canvas id="mycanvas"></canvas></center>
 
