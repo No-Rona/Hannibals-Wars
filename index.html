@@ -17,34 +17,53 @@
 
 <body>
 
-
-		<center><div id='navbar'></div>
-		
-		
-		
-		<div id='mapcont' class='zoomTarget'>
-		
-				<div id="north" class="zoomTarget level0"></div>
-				<div id="south" class="zoomTarget level0"></div>
-				<div id="east" class="zoomTarget level0"></div>
-				<div id="west" class="zoomTarget level0"></div>
-				<div id="center" class="zoomTarget level0"></div>
-			
-			
-			<img id='map' src='img/map.jpg'/>
-			
-		
+<script src="js/processing.js"></script>
+<script type="text/processing" data-processing-target="mycanvas">
+//Directives
+/* @pjs preload="img/map.jpg"; */
 
 
-		
-		
-		</div>
-		
-		<div id='footer'></div><center>
+// Global variables
+PImage map = loadImage("img/map.jpg");
+bool showMenu=false;
 
 
 
+// Setup the Processing Canvas
+void setup(){
+  size( 1300, 700 );
+  frameRate( 30 );
 
 
+
+}
+
+// Main draw loop
+void draw(){
+
+image(map, 0, 0, 1300, 700);
+
+if(showMenu){
+drawMenu();
+}
+               
+}
+//Mouse moving functions
+void mouseMoved(){
+if(mouseY<100){
+showMenu=true;
+}
+else{
+showMenu=false;
+}
+}
+
+void drawMenu(){
+rect(0,0,1300,50,10,10,10,10);
+}
+</script>
+<br><br><center><canvas id="mycanvas"></canvas></center>
+
+<!--center><div id='navbar'></div><div id='mapcont' class='zoomTarget'><div id="north" class="zoomTarget level0"></div><div id="south" class="zoomTarget level0"></div><div id="east" class="zoomTarget level0"></div><div id="west" class="zoomTarget level0"></div><div id="center" class="zoomTarget level0"></div><img id='map' src='img/map.jpg'/></div><div id='footer'></div><center-->
 </body>
 </html>
