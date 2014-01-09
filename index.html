@@ -26,6 +26,39 @@
 //Processing Directives Directives
 /* @pjs preload="img/map.jpg"; */
 /* @pjs preload="img/armyC.jpg"; */
+/* @pjs font="resource/Garamond.ttf"; */
+
+
+//Classes Requuired
+
+class Player{
+	public String name;
+	public String position;
+	public PImage selfie;
+	
+	public Player(String a, String b){
+		name=a;
+		position=b;
+	}
+	
+	public String[] getDetails(){
+		String[] details=new String[2];
+		details[0]=name;
+		details[1]=position;
+		
+		return details;
+	}
+	
+
+}
+
+class Army{
+
+}
+
+class Route{
+
+}
 
 
 
@@ -33,6 +66,10 @@
 PImage map = loadImage("img/map.jpg");
 PImage armyC= loadImage("img/armyC.jpg");
 bool showMenu=false;
+
+
+//Declaration and Initialization of Variables
+Player p1= new Player("Rohan Noronha", "Ambassador of Capua");
 
 
 
@@ -43,7 +80,9 @@ void setup(){
 
   size( 1300, 700 );
   frameRate( 30 );
-  image(map, 0, 0, 1300, 700);
+  textFont(createFont("Garamond", 36));
+  textSize(20);
+
  
 }
 
@@ -59,9 +98,9 @@ void draw(){
 	background(255,132,0);
 	image(map, 0, 0, 1300, 700);
 	if(showMenu){
-		drawMenu();
+		drawMenu(p1);
 	}
-    drawArmy(10.0, 32.77);        
+       
 }
 
 
@@ -86,8 +125,11 @@ void mouseClicked(){
 
 
 //The Menu Bar
-void drawMenu(){
+void drawMenu(Player a){
 rect(0,0,1300,50,10,10,10,10);
+String[] newDet=a.getDetails();
+putText(newDet[0]+"     "+newDet[1],10,20,20);
+
 }
 
 
@@ -97,6 +139,13 @@ void drawArmy(){
 
 }
 
+void putText(String a, int x,int y, int size){
+fill(#0e3151);
+textSize(size);
+text(a,x,y);
+fill(#ffffff);
+textSize(20);
+}
 
 </script>
 <br><br><center><canvas id="mycanvas"></canvas></center>
