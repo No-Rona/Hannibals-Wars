@@ -60,7 +60,17 @@ class Route{
 
 }
 
+class City{
+	public float[] pos= new float[2];
+	public String name;
+	
+	public City(String a,float x,float y){
+		name=a;
+		pos[0]=x;
+		pos[1]=y;
+	}
 
+}
 
 // Global variables
 PImage map = loadImage("img/map.jpg");
@@ -95,8 +105,7 @@ void setup(){
 
 void draw(){
 
-	background(255,132,0);
-	image(map, 0, 0, 1300, 700);
+  image(map, 0, 0, 1300, 700);
 	if(showMenu){
 		drawMenu(p1);
 	}
@@ -128,7 +137,7 @@ void mouseClicked(){
 void drawMenu(Player a){
 rect(0,0,1300,50,10,10,10,10);
 String[] newDet=a.getDetails();
-putText(newDet[0]+"     "+newDet[1],10,20,20);
+putText(newDet[0]+"     "+newDet[1],10,20,20,#0e3151);
 
 }
 
@@ -139,8 +148,8 @@ void drawArmy(){
 
 }
 
-void putText(String a, int x,int y, int size){
-fill(#0e3151);
+void putText(String a, int x,int y, int size, var color){
+fill(color);
 textSize(size);
 text(a,x,y);
 fill(#ffffff);
