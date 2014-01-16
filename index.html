@@ -63,11 +63,33 @@ class Route{
 class City{
 	public float[] pos= new float[2];
 	public String name;
+	public int resource, population;
 	
-	public City(String a,float x,float y){
-		name=a;
-		pos[0]=x;
-		pos[1]=y;
+	public City(String a,float x,float y, int m, int n){
+		name= a;
+		pos[0]= x;
+		pos[1]= y;
+		resource= m;
+		population= n;
+	}
+	
+	public mousePress(int x, int y){
+	
+	if ((x<(pos[0]+5)) && (x>(pos[0]-5)) && (y<(pos[1]+5)) && (y> (pos[1]-5)))
+		return true;
+		
+	else
+		return false;
+	}	
+	
+	public String[] getDetails(){
+		String details[]= new String[3];
+		details[0]= name;
+		details[1]= population;
+		detalis[2]= resources;
+		
+		return details;
+	
 	}
 
 }
@@ -76,11 +98,14 @@ class City{
 PImage map = loadImage("img/map.jpg");
 PImage armyC= loadImage("img/armyC.jpg");
 bool showMenu=false;
-
+int i,j,k;   //Useful as counters \m/
 
 //Declaration and Initialization of Variables
 Player p1= new Player("Rohan Noronha", "Ambassador of Capua");
-
+City[] cities= new City[2];
+int cityLength= cities.length;
+cities[0]= new City('Rome',500,300, 1000, 100);
+cities[1]= new City('Angola',200,600, 500, 75);
 
 
 
@@ -92,6 +117,7 @@ void setup(){
   frameRate( 30 );
   textFont(createFont("Garamond", 36));
   textSize(20);
+  smooth();
 
  
 }
@@ -105,11 +131,12 @@ void setup(){
 
 void draw(){
 
-  image(map, 0, 0, 1300, 700);
+	image(map, 0, 0, 1300, 700);
 	if(showMenu){
 		drawMenu(p1);
 	}
        
+	drawAllCities(cities);
 }
 
 
@@ -132,12 +159,28 @@ void mouseClicked(){
 }
 
 
+//Mouse Pressed Operations
+void mousePressed(){
+
+	for( i=0; i<citylength; i++ )
+		if( cities[i].mousePress(mouseX, mouseY)
+			
+			
+
+}
 
 //The Menu Bar
 void drawMenu(Player a){
 rect(0,0,1300,50,10,10,10,10);
 String[] newDet=a.getDetails();
 putText(newDet[0]+"     "+newDet[1],10,20,20,#0e3151);
+
+}
+
+void drawMenu(City a){
+rect(0,0,1300,50,10,10,10,10);
+String[] newDet=a.getDetails();
+putText(newDet[0]+"     "+newDet[1]+"     "+newDet[2],10,20,20,#0e3151);
 
 }
 
@@ -156,6 +199,20 @@ fill(#ffffff);
 textSize(20);
 }
 
+void drawCity( City a){
+	fill(red);
+	ellipse(a.pos[0]-5, a.pos[1]-5, 10,10);
+	fill(#ffffff);
+}
+
+
+void drawAllCities(City[] a){
+	for(i=0; i<a.length; i++){
+	
+	drawCity(a[i]);
+	}
+
+}
 </script>
 <br><br><center><canvas id="mycanvas"></canvas></center>
 
