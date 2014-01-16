@@ -26,7 +26,7 @@
 //Processing Directives Directives
 /* @pjs preload="img/map.jpg"; */
 /* @pjs preload="img/armyC.jpg"; */
-/* @pjs font="resource/Garamond.ttf"; */
+/* @pjs font="resource/Garamond.ttf";*/ 
 
 
 //Classes Requuired
@@ -73,7 +73,7 @@ class City{
 		population= n;
 	}
 	
-	public mousePress(int x, int y){
+	public boolean mousePress(int x, int y){
 	
 	if ((x<(pos[0]+5)) && (x>(pos[0]-5)) && (y<(pos[1]+5)) && (y> (pos[1]-5)))
 		return true;
@@ -85,8 +85,8 @@ class City{
 	public String[] getDetails(){
 		String details[]= new String[3];
 		details[0]= name;
-		details[1]= population;
-		detalis[2]= resources;
+		details[1]= (String)population;
+		detalis[2]= (String)resources;
 		
 		return details;
 	
@@ -97,16 +97,16 @@ class City{
 // Global variables
 PImage map = loadImage("img/map.jpg");
 PImage armyC= loadImage("img/armyC.jpg");
-bool showMenu=false;
+boolean showMenu=false;
+boolean showCityInfo= false;
 int i,j,k;   //Useful as counters \m/
 
 //Declaration and Initialization of Variables
 Player p1= new Player("Rohan Noronha", "Ambassador of Capua");
 City[] cities= new City[2];
-int cityLength= cities.length;
 cities[0]= new City('Rome',500,300, 1000, 100);
 cities[1]= new City('Angola',200,600, 500, 75);
-
+int cityLength= cities.length;
 
 
 
@@ -136,6 +136,10 @@ void draw(){
 		drawMenu(p1);
 	}
        
+	if(showCityInfo){
+		drawMenuCity(cities[0]);
+	}
+	
 	drawAllCities(cities);
 }
 
@@ -162,12 +166,16 @@ void mouseClicked(){
 //Mouse Pressed Operations
 void mousePressed(){
 
-	for( i=0; i<citylength; i++ )
-		if( cities[i].mousePress(mouseX, mouseY)
-			
-			
+	//for( i=0; i<citylength; i++ )
+		//if( cities[i].mousePress(mouseX, mouseY) ){
+		
+		//drawMenuCity(cities[i]);
+		
+		//}
+		showCityInfo=true;
 
 }
+
 
 //The Menu Bar
 void drawMenu(Player a){
@@ -177,7 +185,7 @@ putText(newDet[0]+"     "+newDet[1],10,20,20,#0e3151);
 
 }
 
-void drawMenu(City a){
+void drawMenuCity(City a){
 rect(0,0,1300,50,10,10,10,10);
 String[] newDet=a.getDetails();
 putText(newDet[0]+"     "+newDet[1]+"     "+newDet[2],10,20,20,#0e3151);
