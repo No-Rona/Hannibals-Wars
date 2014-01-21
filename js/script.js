@@ -1,6 +1,7 @@
 $(document).ready(function(){
 var showing=true;
 var count=0;
+
 $( ".armymove" ).draggable();
 
 	
@@ -32,17 +33,35 @@ $( ".armymove" ).draggable();
 		}
 	});
 	
-	
-	$('createarmy').click(function(){
-	
-		$('#placearmy').html('<p>'+ count + '</p>');
+	$('#createarmy').click(function(){
+		$('#placearmy').html("<p>"+ count + "<p>");
 		count++;
+		
+		var type=prompt("Which is the type?\n1.Roman\n2.Carthage\n3.Greek");
+		
+			if (type=='Roman')
+				{	
+				$('#superContainer').append("<div class='armymove'><img class='armyimage' src='img/romans.ico'/></div>");
+				$('.armymove').draggable();
+				}
+			if (type=='Carthage')
+				{	
+				$('#superContainer').append("<div class='armymove'><img class='armyimage' src='img/carthage.ico'/></div>");
+				$('.armymove').draggable();
+				}
+
+			if (type=='Greek')
+				{	
+				$('#superContainer').append("<div class='armymove'><img class='armyimage' src='img/greek.ico'/></div>");
+				$('.armymove').draggable();
+				}
+
+				
 	});
 	
-	$( ".armymove" ).draggable();
+	$('.armymove').draggable();
+	
+
 	
 });
 
-var troll= new function(){
-document.getElementByID('placearmy').innerHTML("<p>this is cunt</p>");
-};
