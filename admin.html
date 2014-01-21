@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Hannibal's Wars- EXEC</title>
+	<link rel='stylesheet' type='text/css' href='css/example.css'/>
+	<link rel='stylesheet' type='text/css' href='css/style1.css'/>
+	<link rel="stylesheet" type="text/css" href="css/jquery.fullPage.css" />
+	<link rel="icon" type="image/png" href="img/Rome.png">
+	
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>	
+	<script src="js/script.js"></script>
+	
+	<script type="text/javascript" src="js/jquery.fullPage.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$.fn.fullpage({
+				slidesColor: ['#f2f2f2', '#4BBFC3', '#7BAABE', 'whitesmoke', '#ccddff'],
+				anchors: ['fullmap', 'north', 'spain', 'italy','south']
+			});
+		});
+	</script>
+
+
+</head>
+<body class ='body'>
+<div id='navbar'>
+	<p>This is where the Navigation bar will be&emsp;</p>
+	<button id='createarmy' onclick=troll()>Create A fucking Army</button>
+	<div id='placearmy'><p color='#ffffff'>count</p></div>
+</div>
+
+<div id='sidebar'>
+
+<button id='showcity'>Show Fucking Cities</button><br>
+<button id='showroute'>Show Fucking Routes</button><br>
+</div>
+
+<div class="section active" id="section0">
+	<img class='cities' src='img/citiesfull.png'/>
+	<img class='routes' src='img/routesfull.png'/>
+	<img class='maps' src='img/full.jpg'/>
+
+
+</div>
+
+
+<div class="section" id="section1">
+	<img class='maps' src='img/provincia.jpg'/>
+	<!--img class='cities' src='img/citiesprovincia.png'/>
+	<img class='routes' src='img/routesprovincia.png'/-->
+
+</div>
+
+<div class="section" id="section2">
+	<!--img class='maps' src='img/provincia.jpg'/>
+	<!--img class='cities' src='img/citiesprovincia.png'/>
+	<img class='routes' src='img/routesprovincia.png'/-->
+	<h1>Iberia</h1>
+
+</div>
+
+<div class="section" id="section3">
+	<img class='cities' src='img/citiesitaly.png'/>
+	<!--img class='routes' src='img/routesitaly.png'/-->
+	<img class='maps' src='img/italy.jpg'/>
+
+</div>
+<!--div class="section" id="section2">
+    <div class="slide active">
+		<div class="wrap">
+			<h1>Iberia</h1>
+		</div>
+	</div>
+	
+    <div class="slide active">
+		<img class='cities' src='img/citiesitaly.png'/>
+		<!--img class='routes' src='img/routesitaly.png'/>
+		<img class='maps' src='img/italy.jpg'/>
+
+	</div>
+	
+</div-->
+
+
+
+<div class="section" id="section4">
+	<img class='cities' src='img/citiesafrica.png'/>
+	<!--img class='routes' src='img/routesafrica.png'/-->
+	<img class='maps' src='img/africa.jpg'/>
+</div>
+
+<div class='armymove'></div>
+
+</body>
+</html>
