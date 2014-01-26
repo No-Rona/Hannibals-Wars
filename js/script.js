@@ -1,24 +1,48 @@
-var Army= function(name, type, infantry, cavalry, skir, time){
+var Army= function(infolist){			//Army Class and its Components
 
-this.name= name;
-this.type= type;
-this.infno=infantry;
-this.cavno= cavalry;
-this.skirno= skir;
-this.time=time;
+this.type= infolist[0];
+this.infno= infolist[1];
+this.cavno= infolist[2];
+this.skirno= infolist[3];
+this.time= infolist[4];
+this.name= infolist[5];
+this.alive= true;
 
 }
 
-var firstarmy= Army('Army1','Roman',500,500,500,20);
+Army.prototype.displayInfo= function(){		//Display using Alert----will be changed later
+if(this.alive)
+	alert("Type of Army: " + this.type + "\nInfantry: " + this.infno + "\nCavalry: " + this.cavno + "\nSkirmishers: " + this.skirno);
+};
+
+var getInfo = function(type, name){			//Enter Information
+var info = new Array();
+info[0]= type;
+info[1]= prompt("Enter Infantry");
+info[2]= prompt("Enter Cavalry");
+info[3]= prompt("Enter Skirmishers");
+info[4]= prompt("Enter time for recruitment");
+info[5]= name;
+var nigger= new Army(info);
+return nigger;
+};
+
+var initialize = function(){		//Certain initializing variables
+$('.armymove').draggable();
+
+};
+
+var armyList= new Array();					//Global Variables ...to be taken from the files
+var count=0, romanno=0, carthageno=0, greekno=0, macedoniano=0, gaelicno=0, iberianno=0;
 
 $(document).ready(function(){
+
 var showing=true;
-var count=0;
 
 $( ".armymove" ).draggable();
 
 	
-	$('#showcity').click(function(){
+	$('#showcity').click(function(){		//Showing Cities
 	
 		if(showing){
 			$('.cities').css('display','block');
@@ -32,7 +56,7 @@ $( ".armymove" ).draggable();
 		}
 	});
 	
-	$('#showroute').click(function(){
+	$('#showroute').click(function(){			//Show Routes
 	
 		if(showing){
 			$('.routes').css('display','block');
@@ -46,51 +70,65 @@ $( ".armymove" ).draggable();
 		}
 	});
 	
-	$('#createarmy').click(function(){
+	$('#createarmy').click(function(){ 							//Creating Armies
 		$('#placearmy').html("<p>"+ count + "<p>");
-		count++;
 		
 		var type=prompt("Which is the type?\n1.Roman\n2.Carthage\n3.Greek\n4.Gaelic\n5.Iberian\n6.Macedonia");
 		
 			if (type=='Roman')
 				{	
-				$('#superContainer').append("<div class='armymove'><img class='armyimage' src='img/romans.ico'/></div>");
-				$('.armymove').draggable();
+				$('#superContainer').append("<div class='armymove'><img class='armyimage' id='" + count + "' src='img/romans.ico'/></div>");
+				initialize();
+				armyList[count]= getInfo('Roman', 'R'+ romanno++);
+				count++;
+
 				}
 			if (type=='Carthage')
 				{	
 				$('#superContainer').append("<div class='armymove'><img class='armyimage' src='img/carthage.ico'/></div>");
 				$('.armymove').draggable();
+				armyList[count]= getInfo('Carthage', 'C'+ carthageno++);
+				count++;
 				}
 
 			if (type=='Greek')
 				{	
 				$('#superContainer').append("<div class='armymove'><img class='armyimage' src='img/greek.ico'/></div>");
 				$('.armymove').draggable();
+				armyList[count]= getInfo('Greek', 'G'+ greekno++);
+				count++;
 				}
 			if (type=='Macedonia')
 				{	
 				$('#superContainer').append("<div class='armymove'><img class='armyimage' src='img/macedonia.ico'/></div>");
 				$('.armymove').draggable();
+				armyList[count]= getInfo('Macedonia', 'M'+ macedoniano++);
+				count++;
 				}
 				
 			if (type=='Gaelic')
 				{	
 				$('#superContainer').append("<div class='armymove'><img class='armyimage' src='img/gaelic.ico'/></div>");
 				$('.armymove').draggable();
+				armyList[count]= getInfo('Gaelic', 'S'+ gaelicno++);
+				count++;
 				}
 				
 			if (type=='Iberian')
 				{	
 				$('#superContainer').append("<div class='armymove'><img class='armyimage' src='img/slave.ico'/></div>");
 				$('.armymove').draggable();
+				armyList[count]= getInfo('Iberian', 'I'+ Iberian++);
+				count++;
 				}	
 
-				
+
 	});
 	
 	$('.armymove').draggable();
 	
+
+
 
 	
 });
