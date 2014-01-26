@@ -25,17 +25,43 @@
 </head>
 <body class ='body'>
 <div id='navbar'>
-	<p>This is where the Navigation bar will be&emsp;</p>
-	<button id='createarmy'>Raise an Army</button>
+	<div id='cssmenu'>
+<ul>
+   <li class='active'><a href='admin.html#fullmap'><span>Home</span></a></li>
+   <li class='has-sub'><a><span>Go to</span></a>
+      <ul>
+		 <li class='has-sub'><a href='#fullmap'><span>View All</span></a>
+         </li>
+         <li class='has-sub'><a href='#north'><span>Provincia</span></a>
+         </li>
+         <li class='has-sub'><a href='#spain'><span>Iberia</span></a>
+         </li>
+         <li class='has-sub'><a href='#italy'><span>Italy</span></a>
+         </li>
+         <li class='has-sub'><a href='#south'><span>Africa</span></a>
+         </li>
+      </ul>
+   </li>
+   <li class='has-sub'><a><span>Actions</span></a>
+      <ul>
+         <li class='has-sub'><a><span>Create</span></a>
+            <ul>
+               <li  id='createarmy'><a><span>Army</span></a></li>
+               <li class='last'><a><span>Navy</span></a></li>
+            </ul>
+         </li>
+         <li class='has-sub' id='showcity'><a><span>Toggle Cities</span></a></li>
+         <li class='has-sub' id='showroute'><a><span>Toggle Routes</span></a></li>
+      </ul>
+    </li>     
+   <li><a><span>About</span></a></li>
+   <li class='last'  id ='nextturn'><a><span>Next Turn</span></a></li>
+</ul>
+</div>
 	<div id='placearmy'></div>
 </div>
-
-<div id='sidebar'>
-
-<button id='showcity'>Show Cities</button><br>
-<button id='showroute'>Show Routes</button><br>
-<button id='nextturn'>NEXT TURN</button><br>
-</div>
+<!--div id='sidebar'>
+</div-->
 
 <div class="section active" id="section0">
 	<img class='cities' src='img/citiesfull.png'/>
