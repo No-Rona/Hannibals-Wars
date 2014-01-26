@@ -27,9 +27,10 @@ var nigger= new Army(info);
 return nigger;
 };
 
-var initialize = function(){		//Certain initializing variables
+var initialize = function(idnumber){		//Certain initializing variables
 $('.armymove').draggable();
-
+var fuck = $('#placearmy').offset();
+$('#' + idnumber).offset({ top: fuck.top, left: fuck.left });
 };
 
 var armyList= new Array();					//Global Variables ...to be taken from the files
@@ -78,47 +79,47 @@ $( ".armymove" ).draggable();
 			if (type=='Roman')
 				{	
 				$('#superContainer').append("<div class='armymove'><img class='armyimage' id='" + count + "' src='img/romans.ico'/></div>");
-				initialize();
+				initialize(count);
 				armyList[count]= getInfo('Roman', 'R'+ romanno++);
 				count++;
 
 				}
 			if (type=='Carthage')
 				{	
-				$('#superContainer').append("<div class='armymove'><img class='armyimage' src='img/carthage.ico'/></div>");
-				$('.armymove').draggable();
+				$('#superContainer').append("<div class='armymove'><img class='armyimage' id='" + count + "' src='img/carthage.ico'/></div>");
+				initialize(count);
 				armyList[count]= getInfo('Carthage', 'C'+ carthageno++);
 				count++;
 				}
 
 			if (type=='Greek')
 				{	
-				$('#superContainer').append("<div class='armymove'><img class='armyimage' src='img/greek.ico'/></div>");
-				$('.armymove').draggable();
+				$('#superContainer').append("<div class='armymove'><img class='armyimage' id='" + count + "' src='img/greek.ico'/></div>");
+				initialize(count);
 				armyList[count]= getInfo('Greek', 'G'+ greekno++);
 				count++;
 				}
 			if (type=='Macedonia')
 				{	
-				$('#superContainer').append("<div class='armymove'><img class='armyimage' src='img/macedonia.ico'/></div>");
-				$('.armymove').draggable();
+				$('#superContainer').append("<div class='armymove'><img class='armyimage' id='" + count + "' src='img/macedonia.ico'/></div>");
+				initialize(count);
 				armyList[count]= getInfo('Macedonia', 'M'+ macedoniano++);
 				count++;
 				}
 				
 			if (type=='Gaelic')
 				{	
-				$('#superContainer').append("<div class='armymove'><img class='armyimage' src='img/gaelic.ico'/></div>");
-				$('.armymove').draggable();
+				$('#superContainer').append("<div class='armymove'><img class='armyimage' id='" + count + "' src='img/gaelic.ico'/></div>");
+				initialize(count);
 				armyList[count]= getInfo('Gaelic', 'S'+ gaelicno++);
 				count++;
 				}
 				
 			if (type=='Iberian')
 				{	
-				$('#superContainer').append("<div class='armymove'><img class='armyimage' src='img/slave.ico'/></div>");
-				$('.armymove').draggable();
-				armyList[count]= getInfo('Iberian', 'I'+ Iberian++);
+				$('#superContainer').append("<div class='armymove'><img class='armyimage' id='" + count + "' src='img/slave.ico'/></div>");
+				initialize(count);
+				armyList[count]= getInfo('Iberian', 'I'+ iberianno++);
 				count++;
 				}	
 
@@ -127,8 +128,6 @@ $( ".armymove" ).draggable();
 	
 	$('.armymove').draggable();
 	
-
-
 
 	
 });
