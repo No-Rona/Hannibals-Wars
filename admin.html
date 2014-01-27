@@ -27,8 +27,7 @@
 <div id='navbar'>
 	<div id='cssmenu'>
 <ul>
-   <li class='active'><a href='admin.html#fullmap'><span>Home</span></a></li>
-   <li class='has-sub'><a><span>Go to</span></a>
+   <li class='has-sub'><a><span>Navigate</span></a>
       <ul>
 		 <li class='has-sub'><a href='#fullmap'><span>View All</span></a>
          </li>
@@ -53,15 +52,25 @@
          <li class='has-sub' id='showcity'><a><span>Toggle Cities</span></a></li>
          <li class='has-sub' id='showroute'><a><span>Toggle Routes</span></a></li>
       </ul>
-    </li>     
-   <li><a><span>About</span></a></li>
+    </li>  
+		<li class='active' id='placearmy'><a><span>Drop-Box</span></a></li>
+   <li><a><span>Information</span></a>
+   <ul>
+         <li class='has-sub'><a><span>City</span></a>
+		 <ul width=200 height=50><li><select id='cityname'><option value='Massalia'>Massalia</option><option value='Emporion'>Emporion</option><option value='Barcino'>Barcino</option><option value='Taracco'>Taracco</option><option value='Valentia'>Valentia</option><option value='Carthago Nova'>Carthago Nova</option><option value='Gades'>Gades</option><option value='Olisipo'>Olisipo</option><option value='Toletum'>Toletum</option><option value='Kartuba'>Kartuba</option><option value='Arretium'>Arretium</option><option value='Ariminum'>Ariminum</option><option value='Firmum Picenum'>Firmum Picenum</option><option value='Rome'>Rome</option><option value='Capua'>Capua</option><option value='Venusia'>Venusia</option><option value='Tarentum'>Tarentum</option><option value='Heraclea'>Heraclea</option><option value='Croton'>Croton</option><option value='Messana'>Messana</option><option value='Lilybaeum'>Lilybaeum</option><option value='Karalis'>Karalis</option><option value='Tingis'>Tingis</option><option value='Russadir'>Russadir</option><option value='Icosium'>Icosium</option><option value='Hippo Regius'>Hippo Regius</option><option value='Bizerte'>Bizerte</option><option value='Utica'>Utica</option><option value='Carthage'>Carthage</option><option value='Dougga'>Dougga</option><option value='Hadrumentum'>Hadrumentum</option><option value='Ruspina'>Ruspina</option><option value='Thapsus'>Thapsus</option></select><br>
+		 </li><li><a  id='getcityinfo'><span>Get Info</span></a></li></ul>
+		 </li></ul>
+   </li>
    <li class='last'  id ='nextturn'><a><span>Next Turn</span></a></li>
+   <li class='has-sub'><a><span>Period :</span></a>
+   <li class='has-sub'><a><span id='timeperiod'>320 B.C.</span></a>
 </ul>
 </div>
-	<div id='placearmy'></div>
+	<!--div id='placearmy'></div-->
 </div>
-<!--div id='sidebar'>
-</div-->
+<div id='sidebar'>
+<div id='troll'></div>
+</div>
 
 <div class="section active" id="section0">
 	<img class='cities' src='img/citiesfull.png'/>

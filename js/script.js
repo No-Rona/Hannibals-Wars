@@ -1,3 +1,5 @@
+var turncount=0;
+var year= 320;
 var Army= function(infolist){			//Army Class and its Components
 
 this.type= infolist[0];
@@ -10,9 +12,9 @@ this.alive= true;
 
 }
 
-Army.prototype.displayInfo= function(){		//Display using Alert----will be changed later
+Army.prototype.displayInfo= function(){		//Displays in the side Div
 if(this.alive)
-	alert("Type of Army: " + this.type + "\nInfantry: " + this.infno + "\nCavalry: " + this.cavno + "\nSkirmishers: " + this.skirno);
+	return "<b>Type of Army:</b> " + this.type + "<br><b>Infantry:</b> " + this.infno + "<br><b>Cavalry: </b>" + this.cavno + "<br><b>Skirmishers:</b> " + this.skirno;
 };
 
 
@@ -26,7 +28,7 @@ this.talents= talents;
 
 City.prototype.displayInfo= function(){
 
-alert("City : " + this.name + "\nAllegiance : " + this.allegiance + "\nTalents : " + this.talents);
+return "<b>City : </b>" + this.name + "<br><b>Allegiance : </b>" + this.allegiance + "<br><b>Talents : </b>" + this.talents;
 
 };
 
@@ -41,7 +43,7 @@ info[0]= type;
 info[1]= prompt("Enter Infantry");
 info[2]= prompt("Enter Cavalry");
 info[3]= prompt("Enter Skirmishers");
-info[4]= prompt("Enter time for recruitment");
+info[4]= 0;
 info[5]= name;
 var nigger= new Army(info);
 return nigger;
@@ -52,6 +54,14 @@ var initialize = function(idnumber){		//Certain initializing variables
 $('.armymove').draggable();
 var post = $('#placearmy').offset();
 $('#' + idnumber).offset({ top: post.top, left: post.left });
+$('.armyimage').click(function(){
+$('#troll').html("<p>" + armyList[this.id].displayInfo() + "</p>");
+var affir= prompt("1==Yes OR 2==No");
+if(affir==1){
+armyList[this.id].time= prompt("Enter the time for travel then");
+this.style.display= 'none';
+}
+});
 };
 
 var armyList= new Array();					//Global Variables ...to be taken from the files
@@ -92,6 +102,22 @@ cities[30]= new City('Hadrumentum', 'Carthage', '5000');
 cities[31]= new City('Ruspina', 'Carthage', '5000');
 cities[32]= new City('Thapsus', 'Carthage', '5000');
 
+var updateArmyTimes= function(){  //General Updating functions
+var i;
+for(i=0;i<armyList.length; i++){
+if(armyList[i].time)
+	armyList[i].time= (armyList[i].time) -1 ;
+}
+};		
+
+var updateDisplay= function(){
+var i;
+for(i=0;i<armyList.length; i++){
+if(armyList[i].time==0){
+document.getElementById(i).style.display= 'block';
+}
+}
+}
 
 
 $(document).ready(function(){
@@ -130,7 +156,7 @@ $( ".armymove" ).draggable();
 	});
 	
 	$('#createarmy').click(function(){ 							//Creating Armies
-		$('#placearmy').html("<p>"+ count + "<p>");
+		$('#troll').html("<p>"+ count + "<p>");
 		
 		var type=prompt("Which is the type?\n1.Roman\n2.Carthage\n3.Greek\n4.Gaelic\n5.Iberian\n6.Macedonia");
 		
@@ -190,7 +216,31 @@ $( ".armymove" ).draggable();
 
 	});
 	
+	$('#getcityinfo').click(function(){
+		var i=0;
+		var cityname = $('#cityname').find('option:selected').text();
+		for(i=0; i<cities.length; i++){
+			if (cities[i].name == cityname){
+			$('#troll').html("<p>" + cities[i].displayInfo() + "</p>");
+			}
+		}
+	});
+	
+	
+	
 	$('.armymove').draggable();
+	
+	$('#nextturn').click(function(){
+	turncount++;
+	if(turncount%4==0){
+	$('#timeperiod').html( --year + " B.C.");
+	}
+	
+	updateArmyTimes();
+	updateDisplay();
+	
+	
+	});
 	
 
 	
