@@ -1,0 +1,113 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Army Battle</title>
+
+	<link rel='stylesheet' type='text/css' href='css/style2.css'/> 
+	<script src="js/processing.js"></script>
+	<link rel="icon" type="image/png" href="img/Rome.png">
+	
+	
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+	
+
+</head>
+
+<body>
+
+
+<!-- ALL THE PROCESSING SCRIPT  -->
+<script src="js/processing.js"></script>
+<script type="text/processing" data-processing-target="mycanvas">
+
+
+//Processing Directives Directives
+/* @pjs preload="img/map.jpg"; */
+/* @pjs preload="img/armyC.jpg"; */
+/* @pjs font="resource/Garamond.ttf";*/ 
+
+
+//Classes Requuired
+
+
+
+
+// Setup the Processing Canvas
+void setup(){
+
+  size( 700, 700 );
+  frameRate( 50 );
+  textFont(createFont("Garamond", 36));
+  textSize(20);
+  smooth();
+  background(255);
+  noStroke();
+  fill(145);
+
+ 
+}
+
+
+
+
+// Main draw loop
+
+void draw(){
+
+
+}
+
+
+//Mouse moving functions
+void mouseMoved(){
+
+		
+}
+
+
+
+//Mouse Click Operations
+void mouseClicked(){
+	
+}
+
+
+//Mouse Pressed Operations
+void mousePressed(){
+
+
+
+}
+
+void mouseReleased(){
+
+	showCityInfo=false;
+}
+
+
+//The Menu Bar
+void drawMenu(){
+
+}
+
+void drawMenuCity(){
+
+}
+
+
+
+void putText(String a, int x,int y, int size, var color){
+fill(color);
+textSize(size);
+text(a,x,y);
+fill(#ffffff);
+textSize(20);
+}
+
+</script>
+<br><br><center><canvas id="mycanvas" style="border: 2px solid black;"></canvas></center>
+
+<!--center><div id='navbar'></div><div id='mapcont' class='zoomTarget'><div id="north" class="zoomTarget level0"></div><div id="south" class="zoomTarget level0"></div><div id="east" class="zoomTarget level0"></div><div id="west" class="zoomTarget level0"></div><div id="center" class="zoomTarget level0"></div><img id='map' src='img/map.jpg'/></div><div id='footer'></div><center-->
+</body>
+</html>

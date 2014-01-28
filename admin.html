@@ -5,7 +5,7 @@
 	<link rel='stylesheet' type='text/css' href='css/example.css'/>
 	<link rel='stylesheet' type='text/css' href='css/style1.css'/>
 	<link rel="stylesheet" type="text/css" href="css/jquery.fullPage.css" />
-	<link rel="icon" type="image/png" href="img/Rome.png">
+	<link rel="icon" type="shortcut icon" href="img/Rome.png">
 	
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>	
@@ -46,7 +46,7 @@
          <li class='has-sub'><a><span>Create</span></a>
             <ul>
                <li  id='createarmy'><a><span>Army</span></a></li>
-               <li class='last'><a><span>Navy</span></a></li>
+               <li id='createnavy' class='last'><a><span>Navy</span></a></li>
             </ul>
          </li>
          <li class='has-sub' id='showcity'><a><span>Toggle Cities</span></a></li>
@@ -56,14 +56,19 @@
 		<li class='active' id='placearmy'><a><span>Drop-Box</span></a></li>
    <li><a><span>Information</span></a>
    <ul>
-         <li class='has-sub'><a><span>City</span></a>
+         <li id='factioninfo' class='has-sub'><a><span>Faction</span></a>
+		 <ul>
+               <li id='romaninfo'><a><span>Roman</span></a></li>
+               <li id='carthageinfo' class='last'><a><span>Carthage</span></a></li>
+            </ul>
+		 <li class='has-sub'><a><span>City</span></a>
 		 <ul width=200 height=50><li><select id='cityname'><option value='Massalia'>Massalia</option><option value='Emporion'>Emporion</option><option value='Barcino'>Barcino</option><option value='Taracco'>Taracco</option><option value='Valentia'>Valentia</option><option value='Carthago Nova'>Carthago Nova</option><option value='Gades'>Gades</option><option value='Olisipo'>Olisipo</option><option value='Toletum'>Toletum</option><option value='Kartuba'>Kartuba</option><option value='Arretium'>Arretium</option><option value='Ariminum'>Ariminum</option><option value='Firmum Picenum'>Firmum Picenum</option><option value='Rome'>Rome</option><option value='Capua'>Capua</option><option value='Venusia'>Venusia</option><option value='Tarentum'>Tarentum</option><option value='Heraclea'>Heraclea</option><option value='Croton'>Croton</option><option value='Messana'>Messana</option><option value='Lilybaeum'>Lilybaeum</option><option value='Karalis'>Karalis</option><option value='Tingis'>Tingis</option><option value='Russadir'>Russadir</option><option value='Icosium'>Icosium</option><option value='Hippo Regius'>Hippo Regius</option><option value='Bizerte'>Bizerte</option><option value='Utica'>Utica</option><option value='Carthage'>Carthage</option><option value='Dougga'>Dougga</option><option value='Hadrumentum'>Hadrumentum</option><option value='Ruspina'>Ruspina</option><option value='Thapsus'>Thapsus</option></select><br>
 		 </li><li><a  id='getcityinfo'><span>Get Info</span></a></li></ul>
 		 </li></ul>
    </li>
    <li class='last'  id ='nextturn'><a><span>Next Turn</span></a></li>
    <li class='has-sub'><a><span>Period :</span></a>
-   <li class='has-sub'><a><span id='timeperiod'>320 B.C.</span></a>
+   <li class='has-sub'><a><span id='timeperiod'>218 B.C.</span></a>
 </ul>
 </div>
 	<!--div id='placearmy'></div-->
