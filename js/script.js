@@ -29,28 +29,37 @@ this.alive= false;
 
 };
 
-var Navy= function(type, faction){		//Class Navy
+var Navy= function(infolist){		//Class Navy
 
-this.type = type;
-this.faction = faction;
-this.time =0;
+this.faction = infolist[0];
+this.heavy=Number(infolist[1]);
+this.light= Number(infolist[2]);
+this.trireme= Number(infolist[3]);
+this.time =Number(infolist[4]);
 this.alive= true;
 
 }
 
 Navy.prototype.displayInfo= function(){
 if(this.alive)
-	return "<b>Type : </b>" + this.type + "<br><b>Faction : </b>" + this.faction;
+	return "<b>Faction : </b>" + this.faction + "<br><b>Heavy Ships : </b>" + this.heavy + "<br><b>Light Ships : </b>" + this.light + "<br><b>Triremes : </b>" + this.trireme;
 else
 	return "Destroyed";
 };
 
 Navy.prototype.killNavy= function(){
 this.alive=false;
+this.heavy =0;
+this.light=0;
+this.trireme= 0;
 this.time=-1;
 };
+
 Army.prototype.killArmy= function(){
 this.time= -1;
+this.infno=0;
+this.cavno=0;
+this.skirno=0;
 this.alive= false;
 };
 
@@ -91,7 +100,17 @@ var nigger= new Army(info);
 return nigger;
 };
 
+var getInfoN = function(faction){
+var info=  new Array();
+info[0]= faction;
+info[1]= Number(prompt("Number of Heavy Ships"));
+info[2]= Number(prompt("Number of Light Ships"));
+info[3]= Number(prompt("Number of Triremes"));
+info[4] =0;
 
+var nigger= new Navy(info);
+return nigger;
+};
 var initialize = function(idnumber){		//Certain initializing variables
 $('.armymove').draggable();
 var post = $('#placearmy').offset();
@@ -226,15 +245,10 @@ talentsCharged= talentsCharged + 0.85*(Number(armyList[i].cavno));
 }
 }
 for(i=1;i<=navyList.length-1;i++){
-if(navyList[i].faction=='Roman' && navyList[i].alive==true){
-if(navyList[i].type == 'Light Ship'){
-	talentsCharged = talentsCharged + 40; alert("light");}
-else if(navyList[i].type=='Heavy Ship'){
-	talentsCharged = talentsCharged + 60; alert("heavy");}
-else {
-	talentsCharged = talentsCharged +50; alert("trireme");}
-	
-}
+	if(navyList[i].faction == 'Roman' && navyList[i].alive== true){
+	talentsCharged= talentsCharged + ((60*(navyList[i].heavy))+(40*(navyList[i].light))+(50*(navyList[i].trireme)));
+	}
+
 }
 }
 else{
@@ -245,16 +259,11 @@ talentsCharged= talentsCharged + 0.9*(armyList[i].cavno);
 }
 }
 for(i=1;i<=navyList.length-1;i++){
-if(navyList[i].faction=='Carthage' && navyList.alive==true){
-if(navyList[i].type == 'Light Ship')
-	talentsCharged = talentsCharged + 40;
-else if(navyList.type=='Heavy Ship')
-	talentsCharged = talentsCharged + 60;
-else 
-	talentsCharged = talentsCharged +50;
-}
-}
-}
+	if(navyList[i].faction == 'Carthage' && navyList[i].alive== true){
+	talentsCharged= talentsCharged + ((60*(navyList[i].heavy))+(40*(navyList[i].light))+(50*(navyList[i].trireme)));
+	}
+
+}}
 this.talents= Number(this.talents) - Number(talentsCharged);
 };
 
@@ -371,20 +380,32 @@ $( ".armymove" ).draggable();
 	
 	$('#createnavy').click(function(){
 		var belong=prompt("Which is the type?\n1.Roman\n2.Carthage");
-		var type = prompt("Which is the type?\n1.Light Ship\n2.Heavy Ship\n3.Trireme");
 		
 		if(belong=='Roman'){
-		$('#superContainer').append("<div class='armymove'><img class='armyimage' id='" + navycount + "' src='img/romans.ico'/></div>");
+		$('#superContainer').append("<div class='armymove'><img class='armyimage' id='" + navycount + "' width='80px' src='img/romannavy.png'/></div>");
 		navyinitialize(navycount);		
-		navyList[Math.abs(navycount)] = new Navy(type, belong);
+		navyList[Math.abs(navycount)] = getInfoN('Roman');
 		navycount--;
 		}
-		else{
-		$('#superContainer').append("<div class='armymove'><img class='armyimage' id='" + navycount + "' src='img/carthage.ico'/></div>");
+		else if(belong == 'Carthage'){
+		$('#superContainer').append("<div class='armymove'><img class='armyimage' id='" + navycount + "' width='80px' src='img/carthagenavy.png'/></div>");
 		navyinitialize(navycount);		
-		navyList[Math.abs(navycount)] = new Navy(type, belong);
+		navyList[Math.abs(navycount)] = getInfoN('Carthage');
 		navycount--;
 		}
+		else if(belong == 'Macedonia'){
+		$('#superContainer').append("<div class='armymove'><img class='armyimage' id='" + navycount + "' width='80px' src='img/macedonianavy.png'/></div>");
+		navyinitialize(navycount);		
+		navyList[Math.abs(navycount)] = getInfoN('Macedonia');
+		navycount--;
+		}
+		else{ 
+		$('#superContainer').append("<div class='armymove'><img class='armyimage' id='" + navycount + "' width='80px' src='img/greeknavy.png'/></div>");
+		navyinitialize(navycount);		
+		navyList[Math.abs(navycount)] = getInfoN('Greek');
+		navycount--;
+		}
+		
 	});
 	
 	$('#getcityinfo').click(function(){
@@ -393,6 +414,22 @@ $( ".armymove" ).draggable();
 		for(i=0; i<cities.length; i++){
 			if (cities[i].name == cityname){
 			$('#troll').html("<p>" + cities[i].displayInfo() + "</p>");
+			}
+		}
+	});
+	
+	$('#changecity').click(function(){
+	
+		var i=0;
+		var cityname = $('#cityname').find('option:selected').text();
+		for(i=0; i<cities.length; i++){
+			if (cities[i].name == cityname){
+			var alle=prompt("change allegance to 'Roman' or 'Carthage'");
+			cities[i].allegiance=alle;
+			alle=prompt("Change income?");
+			if(alle == 1)
+				cities[i].talents= prompt("Change income to : (Earlier income " + cities[i].talents);
+			break;
 			}
 		}
 	});
