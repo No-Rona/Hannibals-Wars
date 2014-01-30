@@ -382,25 +382,25 @@ $( ".armymove" ).draggable();
 		var belong=prompt("Which is the type?\n1.Roman\n2.Carthage");
 		
 		if(belong=='Roman'){
-		$('#superContainer').append("<div class='armymove'><img class='armyimage' id='" + navycount + "' width='80px' src='img/romannavy.png'/></div>");
+		$('#superContainer').append("<div class='armymove'><img class='armyimage' id='" + navycount + " src='img/romannavy.png'/></div>");
 		navyinitialize(navycount);		
 		navyList[Math.abs(navycount)] = getInfoN('Roman');
 		navycount--;
 		}
 		else if(belong == 'Carthage'){
-		$('#superContainer').append("<div class='armymove'><img class='armyimage' id='" + navycount + "' width='80px' src='img/carthagenavy.png'/></div>");
+		$('#superContainer').append("<div class='armymove'><img class='armyimage' id='" + navycount + " src='img/carthagenavy.png'/></div>");
 		navyinitialize(navycount);		
 		navyList[Math.abs(navycount)] = getInfoN('Carthage');
 		navycount--;
 		}
 		else if(belong == 'Macedonia'){
-		$('#superContainer').append("<div class='armymove'><img class='armyimage' id='" + navycount + "' width='80px' src='img/macedonianavy.png'/></div>");
+		$('#superContainer').append("<div class='armymove'><img class='armyimage' id='" + navycount + " src='img/macedonianavy.png'/></div>");
 		navyinitialize(navycount);		
 		navyList[Math.abs(navycount)] = getInfoN('Macedonia');
 		navycount--;
 		}
 		else{ 
-		$('#superContainer').append("<div class='armymove'><img class='armyimage' id='" + navycount + "' width='80px' src='img/greeknavy.png'/></div>");
+		$('#superContainer').append("<div class='armymove'><img class='armyimage' id='" + navycount + " src='img/greeknavy.png'/></div>");
 		navyinitialize(navycount);		
 		navyList[Math.abs(navycount)] = getInfoN('Greek');
 		navycount--;
@@ -464,6 +464,17 @@ $( ".armymove" ).draggable();
 	$('#carthageinfo').click(function(){
 	$('#troll').html(carthagefaction.displayInfo());
 	});
+	
+	$('#changearmy').click(function(){
+	$.get('http://www.bitsmun.in/2014/emaillog.txt', function(data) {    
+    var lines = data.split("\n");
+
+    $.each(lines, function(n, elem) {
+      $('#troll').append('<div>' + elem + '</div>');
+    });
+	});
+	});
+	
 
 	
 });
