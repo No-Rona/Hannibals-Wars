@@ -117,12 +117,12 @@ var post = $('#placearmy').offset();
 $('#' + idnumber).offset({ top: post.top, left: post.left });
 $('.armyimage').click(function(){
 $('#troll').html("<p>" + (armyList[this.id]).displayInfo() + "</p>");
-var affir= prompt("1==Yes OR 2==No OR 3==KILL MOTHERFUCKERS");
-if(affir==1){
+if(ifmove){
 armyList[this.id].time= prompt("Enter the time for travel then");
 this.style.display= 'none';
 }
-if(affir==3){
+if(ifkill){
+alert("Army Killed");
 this.style.display= 'none';
 armyList[this.id].killArmy();
 }
@@ -135,12 +135,12 @@ var post = $('#placearmy').offset();
 $('#' + idnumber).offset({ top: post.top, left: post.left });
 $('.armyimage').click(function(){
 $('#troll').html("<p>" + (navyList[Math.abs(this.id)]).displayInfo() + "</p>");//Create
-var affir= prompt("1==Yes OR 2==No OR 3==KILL MOTHERFUCKERS");
-if(affir==1){
+
+if(ifmove){
 navyList[Math.abs(this.id)].time= prompt("Enter the time for travel then");
 this.style.display= 'none';
 }
-else if(affir==3){
+else if(ifkill){
 this.style.display= 'none';
 navyList[Math.abs(this.id)].killNavy();//Create
 }
@@ -465,15 +465,35 @@ $( ".armymove" ).draggable();
 	$('#troll').html(carthagefaction.displayInfo());
 	});
 	
-	$('#changearmy').click(function(){
-	$.get('http://www.bitsmun.in/2014/emaillog.txt', function(data) {    
-    var lines = data.split("\n");
+	$('#donothing').click(function(){
+		ifdonothing = true;
+		ifmove=false;
+		ifkill=false;
+		$(this).css('font-weight','bold');
+		$('#move').css('font-weight','normal');
+		$('#kill').css('font-weight','normal');
+	});
 
-    $.each(lines, function(n, elem) {
-      $('#troll').append('<div>' + elem + '</div>');
-    });
+	$('#move').click(function(){
+		ifdonothing = false;
+		ifmove=true;
+		ifkill=false;
+		$(this).css('font-weight','bold');
+		$('#donothing').css('font-weight','normal');
+		$('#kill').css('font-weight','normal');	
 	});
+	
+	$('#kill').click(function(){
+		ifdonothing = false;
+		ifmove=false;
+		ifkill=true;
+		$(this).css('font-weight','bold');
+		$('#donothing').css('font-weight','normal');
+		$('#move').css('font-weight','normal');
+	
 	});
+	
+	
 	
 
 	
