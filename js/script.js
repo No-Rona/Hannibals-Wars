@@ -1,6 +1,6 @@
 var turncount=0;
 var year= 218;
-var ifkill= false, ifmove=false, ifdonothing=true;
+var ifkill= false, ifmove=false, ifdonothing=true, changearmy=false, changenavy= false;
 var Army= function(infolist){			//Army Class and its Components
 
 this.type= infolist[0];
@@ -144,6 +144,10 @@ else if(ifkill){
 this.style.display= 'none';
 navyList[Math.abs(this.id)].killNavy();//Create
 }
+
+else if(changenavy){
+var newno= Math.abs(this.id);
+navyList[newno] = getInfoN(navyList[newno].faction);}
 });
 };
 
@@ -267,6 +271,21 @@ for(i=1;i<=navyList.length-1;i++){
 this.talents= Number(this.talents) - Number(talentsCharged);
 };
 
+
+var updateConsoleLog= function(){
+var i;
+for (i=0; i<cities.length; i++){
+console.log(cities[i].displayInfo());
+}
+for (i=0; i<armyList.length; i++){
+console.log(armyList[i].displayInfo());
+}
+for (i=1;i<=navyList.length-1;i++){
+console.log(navyList[i].displayInfo());
+}
+
+};
+
 $(document).ready(function(){
 
 var showing=true;
@@ -304,9 +323,9 @@ $( ".armymove" ).draggable();
 	
 	$('#createarmy').click(function(){ 							//Creating Armies
 		
-		var type=prompt("Which is the type?\n1.Roman\n2.Carthage\n3.Greek\n4.Gaelic\n5.Iberian\n6.Hannibal\n7.Macedonia\n6.African");
+		var type=prompt("Which is the type?\n1.Roman\n2.Carthage\n3.Greek\n4.Gaelic\n5.Iberian\n6.Hannibal\n7.Macedonia\n8.African");
 		
-			if (type=='Roman')
+			if (type=='Roman' || type=='1')
 				{	
 				$('#superContainer').append("<div class='armymove'><img class='armyimage' id='" + count + "' src='img/romans.ico'/></div>");
 				initialize(count);
@@ -315,7 +334,7 @@ $( ".armymove" ).draggable();
 				count++;
 
 				}
-			if (type=='Carthage')
+			if (type=='Carthage' || type=='2')
 				{	
 				$('#superContainer').append("<div class='armymove'><img class='armyimage' id='" + count + "' src='img/carthage.ico'/></div>");
 				initialize(count);
@@ -324,7 +343,7 @@ $( ".armymove" ).draggable();
 				carthageno++;
 				}
 
-			if (type=='Greek')
+			if (type=='Greek' || type=='3')
 				{	
 				$('#superContainer').append("<div class='armymove'><img class='armyimage' id='" + count + "' src='img/greek.ico'/></div>");
 				initialize(count);
@@ -332,7 +351,7 @@ $( ".armymove" ).draggable();
 				count++;
 				greekno++
 				}
-			if (type=='Macedonia')
+			if (type=='Macedonia' || type=='7')
 				{	
 				$('#superContainer').append("<div class='armymove'><img class='armyimage' id='" + count + "' src='img/macedonia.ico'/></div>");
 				initialize(count);
@@ -341,7 +360,7 @@ $( ".armymove" ).draggable();
 				macedoniano++
 				}
 				
-			if (type=='Gaelic')
+			if (type=='Gaelic' || type=='4')
 				{	
 				$('#superContainer').append("<div class='armymove'><img class='armyimage' id='" + count + "' src='img/gaelic.ico'/></div>");
 				initialize(count);
@@ -350,7 +369,7 @@ $( ".armymove" ).draggable();
 				gaelicno++
 				}
 				
-			if (type=='Iberian')
+			if (type=='Iberian' || type=='5')
 				{	
 				$('#superContainer').append("<div class='armymove'><img class='armyimage' id='" + count + "' src='img/slave.ico'/></div>");
 				initialize(count);
@@ -358,7 +377,7 @@ $( ".armymove" ).draggable();
 				count++;
 				iberianno++
 				}	
-			if (type=='Hannibal')
+			if (type=='Hannibal' || type=='6')
 				{	
 				$('#superContainer').append("<div class='armymove'><img class='armyimage' id='" + count + "' src='img/hannibal.ico'/></div>");
 				initialize(count);
@@ -366,7 +385,7 @@ $( ".armymove" ).draggable();
 				count++;
 				hannibalno++
 				}
-			if (type=='African')
+			if (type=='African' || type=='8')
 				{	
 				$('#superContainer').append("<div class='armymove'><img class='armyimage' id='" + count + "' src='img/african.ico'/></div>");
 				initialize(count);
@@ -379,28 +398,28 @@ $( ".armymove" ).draggable();
 	});
 	
 	$('#createnavy').click(function(){
-		var belong=prompt("Which is the type?\n1.Roman\n2.Carthage");
+		var belong=prompt("Which is the type?\n1.Roman\n2.Carthage\n3.Macedonia\n4.Greek");
 		
-		if(belong=='Roman'){
-		$('#superContainer').append("<div class='armymove'><img class='armyimage' id='" + navycount + " src='img/romannavy.png'/></div>");
+		if(belong=='Roman' || belong=='4'){
+		$('#superContainer').append("<div class='armymove'><img class='armyimage' id='" + navycount + "' src='img/romannavy.png'/></div>");
 		navyinitialize(navycount);		
 		navyList[Math.abs(navycount)] = getInfoN('Roman');
 		navycount--;
 		}
 		else if(belong == 'Carthage'){
-		$('#superContainer').append("<div class='armymove'><img class='armyimage' id='" + navycount + " src='img/carthagenavy.png'/></div>");
+		$('#superContainer').append("<div class='armymove'><img class='armyimage' id='" + navycount + "' src='img/carthagenavy.png'/></div>");
 		navyinitialize(navycount);		
 		navyList[Math.abs(navycount)] = getInfoN('Carthage');
 		navycount--;
 		}
 		else if(belong == 'Macedonia'){
-		$('#superContainer').append("<div class='armymove'><img class='armyimage' id='" + navycount + " src='img/macedonianavy.png'/></div>");
+		$('#superContainer').append("<div class='armymove'><img class='armyimage' id='" + navycount + "' src='img/macedonianavy.png'/></div>");
 		navyinitialize(navycount);		
 		navyList[Math.abs(navycount)] = getInfoN('Macedonia');
 		navycount--;
 		}
 		else{ 
-		$('#superContainer').append("<div class='armymove'><img class='armyimage' id='" + navycount + " src='img/greeknavy.png'/></div>");
+		$('#superContainer').append("<div class='armymove'><img class='armyimage' id='" + navycount + "' src='img/greeknavy.png'/></div>");
 		navyinitialize(navycount);		
 		navyList[Math.abs(navycount)] = getInfoN('Greek');
 		navycount--;
@@ -452,7 +471,7 @@ $( ".armymove" ).draggable();
 	updateArmyTimes();
 	updateNavyTimes();
 	updateDisplay();
-
+	updateConsoleLog();
 	
 	
 	});
@@ -469,29 +488,68 @@ $( ".armymove" ).draggable();
 		ifdonothing = true;
 		ifmove=false;
 		ifkill=false;
+		changearmy= false;
+		changenavy= false;
 		$(this).css('font-weight','bold');
 		$('#move').css('font-weight','normal');
 		$('#kill').css('font-weight','normal');
+		$('#changearmy').css('font-weight','normal');
+		$('#changenavy').css('font-weight','normal');
 	});
 
 	$('#move').click(function(){
 		ifdonothing = false;
 		ifmove=true;
 		ifkill=false;
+		changearmy= false;
+		changenavy= false;
 		$(this).css('font-weight','bold');
 		$('#donothing').css('font-weight','normal');
 		$('#kill').css('font-weight','normal');	
+		$('#changearmy').css('font-weight','normal');
+		$('#changenavy').css('font-weight','normal');
 	});
 	
 	$('#kill').click(function(){
 		ifdonothing = false;
 		ifmove=false;
 		ifkill=true;
+		changearmy= false;
+		changenavy= false;
 		$(this).css('font-weight','bold');
 		$('#donothing').css('font-weight','normal');
 		$('#move').css('font-weight','normal');
+		$('#changearmy').css('font-weight','normal');
+		$('#changenavy').css('font-weight','normal');
 	
 	});
+	
+	$('#changearmy').click(function(){
+		ifdonothing = false;
+		ifmove=false;
+		ifkill=false;
+		changearmy= true;
+		$(this).css('font-weight','bold');
+		$('#donothing').css('font-weight','normal');
+		$('#move').css('font-weight','normal');
+		$('#kill').css('font-weight','normal');
+		
+	
+	});
+	
+	$('#changenavy').click(function(){
+		ifdonothing = false;
+		ifmove=false;
+		ifkill=false;
+		changenavy= true;
+		$(this).css('font-weight','bold');
+		$('#donothing').css('font-weight','normal');
+		$('#move').css('font-weight','normal');
+		$('#kill').css('font-weight','normal');
+	
+	});
+	
+	
 	
 	
 	

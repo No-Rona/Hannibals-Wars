@@ -1,12 +1,17 @@
 var counter=0;
-
+var kill= false;
 
 var initialize= function(count){
 var post = $('#placearmy').offset();
 $('#' + count).offset({ top: post.top, left: Number((post.left) + 60) });
 $('.armies').draggable();
 $('.armies').click(function(){
+if(kill){
+$(this).css('display','none');
+}
+else{
 $(this).rotate({event: "mouseover", speed: 0.5});
+}
 });
 };
 
@@ -47,5 +52,16 @@ $('body').append("<div class='armies' id='" + counter + "'><img class='armyimage
 initialize(counter);
 counter++;
 });
+
+$('#kill').click(function(){
+kill= true;
+$(this).css('font-weight', 'bold');
+});
+
+$('#has-sub').click(function(){
+kill= false;
+$('#kill').css('font-weight', 'normal');
+});
+
 
 });

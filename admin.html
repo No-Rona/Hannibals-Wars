@@ -15,7 +15,7 @@
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$.fn.fullpage({
-				slidesColor: ['#f2f2f2', '#4BBFC3', '#7BAABE', 'whitesmoke', '#ccddff'],
+				slidesColor: ['#000', '#000', '#000', '#000', '#000'],
 				anchors: ['fullmap', 'north', 'spain', 'italy','south']
 			});
 		});
@@ -30,15 +30,15 @@
 <ul>
    <li class='has-sub'><a><span>Navigate</span></a>
       <ul>
-		 <li class='has-sub'><a href='#fullmap'><span>View All</span></a>
+		 <li><a href='#fullmap'><span>View All</span></a>
          </li>
-         <li class='has-sub'><a href='#north'><span>Provincia</span></a>
+         <li><a href='#north'><span>Provincia</span></a>
          </li>
-         <li class='has-sub'><a href='#spain'><span>Iberia</span></a>
+         <li><a href='#spain'><span>Iberia</span></a>
          </li>
-         <li class='has-sub'><a href='#italy'><span>Italy</span></a>
+         <li><a href='#italy'><span>Italy</span></a>
          </li>
-         <li class='has-sub'><a href='#south'><span>Africa</span></a>
+         <li><a href='#south'><span>Africa</span></a>
          </li>
       </ul>
    </li>
@@ -52,13 +52,15 @@
          </li>
 		 <li class='has-sub'><a><span>Change</span></a>
 		 <ul>
-               <li id='changearmy' onclick="loadXMLDoc()"><a><span>Army</span></a></li>
+               <li id='changearmy'><a><span>Army</span></a></li>
 			   <li id='changenavy'><a><span>Navy</span></a></li>
                <li id='changecity' class='last'><a><span>City</span></a></li>
             </ul>
 		</li>
-         <li class='has-sub' id='showcity'><a><span>Toggle Cities</span></a></li>
-         <li class='has-sub' id='showroute'><a><span>Toggle Routes</span></a></li>
+         <li id='showcity'><a><span>Toggle Cities</span></a></li>
+         <li id='showroute'><a><span>Toggle Routes</span></a></li>
+		 <li id='showroute'><a><span>Toggle Routes</span></a></li>
+		 <li id='showroute'><a href='battlesim.html' target='_blank'><span>Sim Battle</span></a></li>
       </ul>
     </li>  
 		<li class='active' id='placearmy'><a><span>Drop-Box</span></a></li>
@@ -75,8 +77,8 @@
 		 </li></ul>
    </li>
    <li class='last'  id ='nextturn'><a><span>Next Turn</span></a></li>
-   <li class='has-sub'><a><span>Period :</span></a>
-   <li class='has-sub'><a><span id='timeperiod'>218 B.C.</span></a>
+   <li><a><span>Period :</span></a>
+   <li><a><span id='timeperiod'>218 B.C.</span></a>
 </ul>
 </div>
 	<!--div id='placearmy'></div-->
@@ -89,9 +91,11 @@
 </div>
 
 <div class="section active" id="section0">
+
 	<img class='cities' src='img/citiesfull.png'/>
 	<img class='routes' src='img/routesfull.png'/>
 	<img class='maps' src='img/full.jpg'/>
+
 
 
 </div>
