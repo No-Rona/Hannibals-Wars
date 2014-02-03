@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Army Battle Simulator</title>
+
+	<link rel='stylesheet' type='text/css' href='css/style2.css'/> 
+	<link rel="icon" type="image/png" href="img/Rome.png">
+	
+	
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+	
+	
+	<script type="text/javascript" src="js/rotate.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+
+	$('.armies').rotate({way: 'left', event: 'click'});
+	
+	});
+</script>
+	
+	
+	<link rel="stylesheet" type="text/css" href="http://static.awwapp.com/plugin/1.0/aww.css"/>
+	<script type="text/javascript" src="http://static.awwapp.com/plugin/1.0/aww.min.js"></script>
+	<style type="text/css">
+            #wrapper {
+                border: 1px solid black;
+                width: 90%;
+				height: 700px;
+                margin: 50px auto;
+            }
+			
+       </style>
+	
+	<script type='text/javascript' src='js/script2.js'></script>
+</head>
+
+<body>
+<div id='navbar'>
+	<div id='cssmenu'>
+<ul>
+	<li><a><span>Hannibal's Wars - Battlefield</span></a></li>
+   <li class='has-sub'><a><span>ADD ARMY</span></a>
+      <ul>
+		 <li class='has-sub' id='ri'><a><span style="color:#FF0000;">INFANTRY</span></a>
+         </li>
+         <li class='has-sub' id='rc'><a><span style="color:#FF0000;">CAVALRY</span></a>
+         </li>
+         <li class='has-sub' id='rs'><a><span style="color:#FF0000;">SKIRMISHERS</span></a>
+         </li>
+         <li class='has-sub' id='bi'><a><span style="color:#0000FF;">INFANTRY</span></a>
+         </li>
+         <li class='has-sub' id='bc'><a><span style="color:#0000FF;">CAVALRY</span></a>
+         </li>
+		 <li class='has-sub' id='bs'><a><span style="color:#0000FF;">SKIRMISHERS</span></a>
+         </li>
+		 </li>
+		 <li id='kill'><a><span style="color:#000;">DESTROY</span></a>
+         </li>
+      </ul>
+   </li>
+   <li id='placearmy'><a>_________</a></li>
+
+</ul>
+</div>
+</div>
+
+<div id="wrapper"></div> 
+
+
+
+<script type="text/javascript">
+$(function() { $('#wrapper').awwCanvas(); });
+</script>
+</body>
+</html>
